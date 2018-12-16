@@ -1,0 +1,46 @@
+
+{% extends 'kiev_map/base.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="container-fluid" style=" margin-left: 20px;">
+    <h1>Вулиці</h1>
+  <div class="row">
+   {% for street in all_streets %}
+
+
+        <div class="col-sm-12 col-md-12 col-lg-6">
+
+
+        <div class="card" style="width:90%;height: 600px; margin: 7px;">
+
+             {% for key, value in photos.items %}
+                {% if key == street %}
+                <img class="card-img-top" src="{{ value }}" alt="{{ street.name }}" style="max-height: 60%;width:90%;">
+                {% endif %}
+                {% endfor %}
+
+    <div class="card-body">
+      <h2 class="card-title">{{ street.name }}</h2>
+      <p class="card-text">{{ street.shortIntro }}</p>
+      <a href="{% url 'kiev_map:street_id' street.id %}" class="btn btn-primary">Більше інформації</a>
+    </div>
+  </div>
+
+    </div>
+
+
+
+
+    {% endfor %}
+
+
+</div>
+
+
+
+
+
+    </div>
+
+
+{% endblock %}

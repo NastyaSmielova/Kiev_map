@@ -1,0 +1,96 @@
+
+{% extends 'kiev_map/base.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="container-fluid" style=" margin-left: 20px;">
+
+    <div class="center">
+    <h1 id="districts"> Райони</h1>
+  </div>
+
+  <div class="row">
+
+
+   {% for district in all_districts %}
+
+
+        <div class="col-sm-12 col-md-6">
+
+
+        <div class="card" style="width:600px;height: 600px; margin: 7px;">
+
+             {% for key, value in photos.items %}
+                {% if key == district %}
+                <img class="card-img-top" src="{{ value }}" alt="Card image" style="width:90%; max-height: 70%;">
+                {% endif %}
+                {% endfor %}
+
+    <div class="card-body">
+      <h2 class="card-title">{{ district.name }}</h2>
+      <p class="card-text">{{ district.shortIntro }}</p>
+      <a href="{% url 'kiev_map:district_id' district.id %}" class="btn btn-primary">Більше інформації</a>
+    </div>
+  </div>
+
+    </div>
+
+
+
+
+    {% endfor %}
+
+
+</div>
+    <div class="center">
+        <h1>
+      <a href="{% url 'kiev_map:districts' %}" >Переглянути всі райони</a>
+            </h1>
+     </div>
+        </div>
+
+
+     <div class="center">
+    <h1 id="streets"> Вулиці</h1>
+  </div>
+
+      <div class="row">
+   {% for street in all_streets %}
+
+
+        <div class="col-sm-12 col-md-6">
+
+
+        <div class="card" style="width:600px;height: 600px; margin: 7px;">
+
+             {% for key, value in photos.items %}
+                {% if key == street %}
+                <img class="card-img-top" src="{{ value }}" alt="Card image" style="max-height: 60%;width:90%;">
+                {% endif %}
+                {% endfor %}
+
+    <div class="card-body">
+      <h2 class="card-title">{{ street.name }}</h2>
+      <p class="card-text">{{ street.shortIntro }}</p>
+      <a href="{% url 'kiev_map:street_id' street.id %}" class="btn btn-primary">Більше інформації</a>
+    </div>
+  </div>
+
+    </div>
+
+
+
+
+    {% endfor %}
+
+
+</div>
+    <div class="center">
+        <h1>
+      <a href="{% url 'kiev_map:streets' %}" >Переглянути всі вулиці</a>
+            </h1>
+     </div>
+
+
+
+
+{% endblock %}

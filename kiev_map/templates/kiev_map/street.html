@@ -1,0 +1,25 @@
+
+{% extends 'kiev_map/base.html' %}
+{% load i18n %}
+{% block content %}
+    <h1> {{ street.name }}</h1>
+
+    {% for photo, text in text_pairs %}
+        {{ text }}
+        <br>
+            <div class="container">
+
+        <image src="{{ photo.file }}" class="img-rounded"  style="width:100%;margin-left: auto;margin-right: auto;" alt="{{ street.name }}"></image>
+        <br>
+        </div>
+
+    {% endfor %}
+            <br>
+        <br>
+        <br>
+        <br>
+
+    <iframe  class="container-fluid embed-responsive-item" style="height: 900px;width: 100%" src="https://nominatim.openstreetmap.org/search.php?q={{ link }}&polygon_geojson=1&viewbox=">
+         <p>Your browser does not support iframes.</p>
+    </iframe>
+{% endblock %}

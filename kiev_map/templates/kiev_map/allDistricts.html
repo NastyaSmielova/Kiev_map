@@ -1,0 +1,47 @@
+
+{% extends 'kiev_map/base.html' %}
+{% load i18n %}
+{% block content %}
+        <h1>Райони</h1>
+
+    <div class="container-fluid" style=" margin-left: 20px;">
+  <div class="row">
+   {% for district in all_districts %}
+
+
+        <div class="col-sm-12 col-md-12 col-lg-6">
+
+
+        <div class="card" style="width:90%;height: 600px; margin: 7px;">
+
+             {% for key, value in photos.items %}
+                {% if key == district %}
+                <img class="card-img-top" src="{{ value }}" alt={{ district.name }} style="width:90%;max-height:60%">
+                {% endif %}
+                {% endfor %}
+
+            <div class="card-body">
+              <h2 class="card-title">{{ district.name }}</h2>
+              <p class="card-text">{{ district.shortIntro }}</p>
+              <a href="{% url 'kiev_map:district_id' district.id %}" class="btn btn-primary">Більше інформації</a>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    {% endfor %}
+
+
+</div>
+
+
+
+
+
+    </div>
+
+
+{% endblock %}

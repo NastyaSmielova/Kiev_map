@@ -1,0 +1,44 @@
+
+{% extends 'kiev_map/base.html' %}
+{% load i18n %}
+{% block content %}
+    <h1> {{ district.name }}</h1>
+
+    {% for photo, text in text_pairs %}
+        {{ text }}
+        <br>
+         <div class="container">
+                        <img  src="{{ photo.file }}" alt="Card image" style="width:90%;margin-left: auto;margin-right: auto;">
+         </div>
+        <br>
+
+    {% endfor %}
+    <h1>Вулиці</h1>
+<br>
+    {% for street in streets %}
+            <div class="col-sm-12 col-md-4">
+                <div class="card" style="width:400px;height: 400px; margin: 7px;">
+
+            {% for key, value in photos_streets.items %}
+                {% if key == street %}
+                    <img class="card-img-top" src="{{ value }}" alt="Card image" style="width:90%; max-height: 70%;">
+                {% endif %}
+            {% endfor %}
+           <h2>
+               <a href="{% url 'kiev_map:street_id' street.id %}" class="btn btn-primary" >{{ street.name }}</a>
+           </h2>
+            </div>
+            </div>
+    {% endfor %}
+<br>
+    <div class="container" >
+    <h2>
+                       <a href="{% url 'kiev_map:streets_by_district' district.id %}" >Переглянути більше вулиць даного району</a>
+
+    </h2>
+    </div>
+<br>
+    <br><br>
+
+
+{% endblock %}

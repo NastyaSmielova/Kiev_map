@@ -1,0 +1,50 @@
+{% extends 'kiev_map/base.html' %}
+
+{% load i18n %}
+{% block content %}
+
+    <div class="form-group container">
+        <div id="introText"> Потрібно обрати одну правильну відповідь на наведене запитання.
+            <br> Після 3 помилки гра закінчується. <br>Час також є обмеженим. Щасти!
+        </div>
+         <button id="start" > Почати </button>
+            <div id="quizresult"></div>
+
+
+        <div class="row">
+            <div class="col-sm-7" >
+                      <h3 style="letter-spacing: 3px;  line-height: 1.8;">
+                          <div id="quiz"  class="radio"></div>
+                      </h3>
+
+                <button id="submit" style="visibility  :hidden"> Відповісти </button>
+            </div>
+
+            <div class="col-sm-4">
+              <h3>
+                  <p id="clock" style="visibility  :hidden"> Час: </p>
+                  <br>
+                  <div id="answers" style="visibility  :hidden">Запитання </div>
+                                    <br>
+
+                  <div id="results"></div>
+
+                  <br>
+
+              </h3>
+            </div>
+         </div>
+
+
+    </div>
+             <script>
+
+                        window.onload = function st(){
+
+                            {% for question in questions %}
+                                     addQuestion({{ question |safe}});
+                            {% endfor %}
+                        };
+                        init()
+            </script>
+{% endblock %}

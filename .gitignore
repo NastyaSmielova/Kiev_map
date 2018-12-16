@@ -1,0 +1,12 @@
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+*.txt
+env_1/
+data/*.txt
+
+.idea/*.pyc
