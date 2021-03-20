@@ -24,7 +24,7 @@ httplib2==0.11.3
 hurry==1.0
 idna==2.6
 itsdangerous==0.24
-Jinja2==2.9.6
+Jinja2==2.11.3
 kiwisolver==1.0.1
 MarkupSafe==1.0
 matplotlib==2.2.2
